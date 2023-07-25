@@ -13,9 +13,9 @@ summary: |
   Injects environment variables for Turbopump
 description: |
   Injects environment variables for Turbopump
-website: https://github.com/patrontech/bitrise-step-turbopump-ios-environment
-source_code_url: https://github.com/patrontech/bitrise-step-turbopump-ios-environment
-support_url: https://github.com/patrontech/bitrise-step-turbopump-ios-environment/issues
+website: https://github.com/patrontech/bitrise-step-turbopump-android-environment
+source_code_url: https://github.com/patrontech/bitrise-step-turbopump-android-environment
+support_url: https://github.com/patrontech/bitrise-step-turbopump-android-environment/issues
 
 # If this step should be available only for certain project types
 # just uncomment this `project_type_tags` section and include all the
@@ -63,7 +63,7 @@ type_tags:
 
 toolkit:
   go:
-    package_name: github.com/patrontech/bitrise-step-turbopump-ios-environment
+    package_name: github.com/patrontech/bitrise-step-turbopump-android-environment
 
 inputs:
   - turbo_project: $turbo_project
@@ -99,13 +99,12 @@ inputs:
       title: "Build product"
       summary: "Determines what kind of product to build and what to do with it."
       description: |
-        There are three possiblities for iOS: `essaieca`, `appstore`, `appstore+upload`
+        There are two possiblities for Android: `essaieca`, `release`.
       is_expand: false
       is_required: true
       value_options:
         - essaieca 
-        - appstore
-        - appstore+upload
+        - release
 
 outputs:
   - turbo_project:
@@ -131,4 +130,4 @@ outputs:
       title: "Build product"
       summary: "Determines what kind of product to build and what to do with it."
       description: |
-        There are three possibilities for iOS: `essaieca`, `appstore`, `appstore+upload`.
+        There are two possibilities for Android: `essaieca`, `release`.
