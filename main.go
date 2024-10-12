@@ -25,7 +25,7 @@ func main() {
 	os.Exit(0)
 }
 
-func getEnv(logger log.Logger, envvars ...interface{}) map[string]string {
+func getEnv(logger log.Logger, envvars ...any) map[string]string {
 	result := map[string]string{}
 	for _, v := range envvars {
 		var ev envvar
@@ -39,7 +39,9 @@ func getEnv(logger log.Logger, envvars ...interface{}) map[string]string {
 			continue
 		}
 		varvalue := strings.TrimSpace(os.Getenv(ev.name))
-		if len(varvalue) > 0 {
+		if ev.name == "build_product" && varvalue == "debug" {
+			varvalue = "package"
+		} else if len(varvalue) > 0 {
 			result[ev.name] = varvalue
 		} else if ev.defaultValue != nil {
 			result[ev.name] = *ev.defaultValue
